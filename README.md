@@ -16,3 +16,5 @@ A part of learning C and C++, separated from project "LearnCoding" of mine
 - *UCRT64*(*gcc*/*g*++/*gdb*)
 
 - *MinGW64*(*gcc*/*g*++/*gdb*)
+
+- *CLANG64*(*clang*/*clang*++/*gdb*)
