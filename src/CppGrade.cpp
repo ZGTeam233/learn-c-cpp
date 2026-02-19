@@ -6,7 +6,7 @@ using namespace std;
 
 int checkLevel() {
 	int grade;
-	cout << "\n=== CHEAK LEVEL ===\n";
+	cout << "\n=== CHECK LEVEL ===\n";
 	cout << "Enter your grade (0-100): ";
 	cin >> grade;
 	if (grade > 100 || grade < 0) {
@@ -37,7 +37,7 @@ int checkScholarship() {
 	int grade;
 	char isStuLeader;
 	char isExcellentVolunteer;
-	cout << "\n=== CHEAK SCHOLARSHIP ===\n";
+	cout << "\n=== CHECK SCHOLARSHIP ===\n";
 
 	cout << "Enter your grade (0-100): ";
 	cin >> grade;
@@ -45,7 +45,7 @@ int checkScholarship() {
 		return 1; // 带错误退出函数
 	}
 
-	cout << "Have you ever been student leader? (Y/N): ";
+	cout << "Have you ever been a student leader? (Y/N): ";
 	cin >> isStuLeader;
 	isStuLeader = toupper(isStuLeader);
 	if (isStuLeader != 'Y' && isStuLeader != 'N') {
@@ -74,9 +74,24 @@ int checkScholarship() {
 	} else if (grade >= 80 && isStuLeader == 'Y') {
 		isEligible = true;
 		scholarType = "Student Leader"; // 学生干部
-	} else if (grade >= 70 && isStuLeader == 'Y' && isExcellentVolunteer == 'Y') {
+	} else if (grade >= 75 && isStuLeader == 'Y' && isExcellentVolunteer == 'Y') {
 		isEligible = true;
 		scholarType = "Comprehensive"; // 综合奖学金
+	} else if (grade >= 70 && isExcellentVolunteer == 'Y') {
+		isEligible = true;
+		scholarType = "Volunteer"; // 优秀志愿者
+	} else if (grade >= 60 && grade < 70) {
+		char hasImproved;
+		cout << "Compared to last term, have your grades improved significantly? (Y/N): ";
+		cin >> hasImproved;
+		hasImproved = toupper(hasImproved);
+		if (hasImproved != 'Y' && hasImproved != 'N') {
+			return 2; // 带错误退出函数
+		}
+		if (hasImproved == 'Y') {
+			isEligible = true;
+			scholarType = "Improvement"; // 成绩进步奖
+		}
 	}
 
 	if (isEligible) {
