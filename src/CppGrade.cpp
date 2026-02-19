@@ -102,8 +102,54 @@ int checkScholarship() {
 	return 0; // 正常退出函数
 }
 
-void showEvaluation() {
-	cout << "This semester's evaluation: Keep up the good work!\n";
+int showEvaluation() {
+	int averageGrade;
+	cout << "\n=== TERM EVALUATION ===\n";
+	cout << "Enter your average grade for this term (0-100): ";
+	cin >> averageGrade;
+	if (averageGrade > 100 || averageGrade < 0) {
+		return 1; // 带错误退出函数
+	}
+	switch (averageGrade / 10) {
+	case 10:
+	case 9:
+		cout << "Level A\n";
+		cout << "Overall Performance: OUTSTANDING\n";
+		cout << "Feedback: You have demonstrated exceptional mastery of the course material.\n";
+		cout << "Your consistent high performance sets a remarkable standard.\n";
+        cout << "Suggestion: Consider taking on advanced projects or mentoring peers.\n";
+		break;
+	case 8:
+		cout << "Level B\n";
+		cout << "Overall Performance: VERY GOOD\n";
+		cout << "Feedback: You have a strong grasp of the subject and consistently exceed expectations.\n";
+        cout << "Suggestion: Focus on the few complex topics to reach the next level.\n";
+		break;
+	case 7:
+		cout << "Level C\n";
+		cout << "Overall Performance: SATISFACTORY\n";
+		cout << "Feedback: You meet all core learning objectives. There is a solid foundation to build upon.\n";
+        cout << "Suggestion: Increase revision time and actively participate in study groups.\n";
+		break;
+	case 6:
+		cout << "Level D\n";
+		cout << "Overall Performance: NEEDS IMPROVEMENT\n";
+		cout << "Feedback: You have passed, but significant gaps in understanding are present.\n";
+        cout << "Suggestion: It is highly recommended to seek help from the instructor or a tutor, and review fundamentals.\n";
+		break;
+	default:
+		cout << "Level E\n";
+		cout << "Overall Performance: UNSATISFACTORY\n";
+		cout << "Feedback: The current results indicate a major misunderstanding of the course content.\n";
+        cout << "Suggestion: Immediate action is required. Please schedule a meeting with your academic advisor to create a recovery plan.\n";
+		break;
+	}
+	cout << "\n--- General Advice for Next Semester ---\n";
+    cout << "1. Review your notes weekly, not just before exams.\n";
+    cout << "2. Complete all assigned practice problems.\n";
+    cout << "3. Don't hesitate to ask questions during lectures or office hours.\n";
+    cout << "=========================================\n";
+	return 0; // 正常退出函数
 }
 
 int main() {
@@ -138,7 +184,10 @@ int main() {
             }
             break;
 		case 3:
-			showEvaluation();
+			while (showEvaluation() == 1) {
+				// 重新调用函数让用户输入正确的成绩
+				cout << "Invalid average grade. Please enter a number between 0 and 100.\n";
+			}
 			break;
 		case 4:
 			cout << "Exiting program. Goodbye!\n";
