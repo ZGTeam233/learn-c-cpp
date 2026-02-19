@@ -19,11 +19,11 @@ int main() {
             scanf("%d", &guess);
             attempts++;
 
-            if (guess < password[round])
+            if (guess < password[round]) {
                 printf("Too low! Try again.\n"); // 猜测过低
-            else if (guess > password[round])
+            } else if (guess > password[round]) {
                 printf("Too high! Try again.\n"); // 猜测过高
-            else {
+            } else {
                 // 猜测正确
                 printf("Congratulations! You've guessed the correct number: %d\n", password[round]);
                 if (round == 4) {

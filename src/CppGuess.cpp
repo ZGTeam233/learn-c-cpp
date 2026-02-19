@@ -19,11 +19,11 @@ int main() {
             std::cin >> guess;
             attempts++;
 
-            if (guess < password[round])
+            if (guess < password[round]) {
                 std::cout << "Too low! Try again.\n"; // 猜测过低
-            else if (guess > password[round])
+            } else if (guess > password[round]) {
                 std::cout << "Too high! Try again.\n"; // 猜测过高
-            else {
+            } else {
                 // 猜测正确
                 std::cout << "Congratulations! You've guessed the correct number: " << password[round] << ".\n" << std::endl;
                 if (round == 4) {
