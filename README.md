@@ -1,4 +1,4 @@
-# learn-c-cpp
+# learn-cpp
 A part of learning C and C++, separated from project "LearnCoding" of mine
 
 #### 介绍
