@@ -8,32 +8,32 @@ int main() {
     const int password[5] = { 42, 15, 7, 93, 28 }; // 猜数字游戏答案
     int round = 0; // 当前轮数
     int choice;
-    std::cout << "Welcome to the Guessing Game!\n";
-    std::cout << "I have selected a number between 1 and 100.\n";
-    std::cout << "Can you guess what it is ?\n";
-    std::cout << "You have seven attempts to guess the correct number.\n";
+    std::cout << "Welcome to the Guessing Game!\n" << std::endl;
+    std::cout << "I have selected a number between 1 and 100.\n" << std::endl;
+    std::cout << "Can you guess what it is ?\n" << std::endl;
+    std::cout << "You have seven attempts to guess the correct number.\n" << std::endl;
     while (guess != password[round]) {
         if (attempts < 7) {
             // 允许猜测
-            std::cout << "Enter your guess: ";
+            std::cout << "Enter your guess: " << std::endl;
             std::cin >> guess;
             attempts++;
 
             if (guess < password[round]) {
-                std::cout << "Too low! Try again.\n"; // 猜测过低
+                std::cout << "Too low! Try again.\n" << std::endl; // 猜测过低
             } else if (guess > password[round]) {
-                std::cout << "Too high! Try again.\n"; // 猜测过高
+                std::cout << "Too high! Try again.\n" << std::endl; // 猜测过高
             } else {
                 // 猜测正确
                 std::cout << "Congratulations! You've guessed the correct number: " << password[round] << ".\n" << std::endl;
                 if (round == 4) {
                     // 完成所有轮次
-                    std::cout << "You've completed all rounds! Well done!\n";
+                    std::cout << "You've completed all rounds! Well done!\n" << std::endl;
                     break;
                 }
                 else {
                     // 询问是否继续下一轮
-                    std::cout << "Wanna try the next number? Input 1 to continue or 0 to quit: ";
+                    std::cout << "Wanna try the next number? Input 1 to continue or 0 to quit: " << std::endl;
                     std::cin >> choice;
                     if (choice == 1) {
                         // 继续下一轮
