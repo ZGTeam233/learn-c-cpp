@@ -10,7 +10,7 @@ int checkLevel() {
 	cout << "Enter your grade (0-100): ";
 	cin >> grade;
 	if (grade > 100 || grade < 0) {
-		return 1; // 带错误退出函数
+		return -1; // 带错误退出函数
 	}
 	switch (grade / 10) {
 	case 10:
@@ -42,14 +42,14 @@ int checkScholarship() {
 	cout << "Enter your grade (0-100): ";
 	cin >> grade;
 	if (grade > 100 || grade < 0) {
-		return 1; // 带错误退出函数
+		return -1; // 带错误退出函数
 	}
 
 	cout << "Have you ever been a student leader? (Y/N): ";
 	cin >> isStuLeader;
 	isStuLeader = toupper(isStuLeader);
 	if (isStuLeader != 'Y' && isStuLeader != 'N') {
-		return 2; // 带错误退出函数
+		return -2; // 带错误退出函数
 	}
 
 	
@@ -57,7 +57,7 @@ int checkScholarship() {
 	cin >> isExcellentVolunteer;
 	isExcellentVolunteer = toupper(isExcellentVolunteer);
 	if (isExcellentVolunteer != 'Y' && isExcellentVolunteer != 'N') {
-		return 2; // 带错误退出函数
+		return -2; // 带错误退出函数
 	}
 
 	cout << "\n--- SCHOLARSHIP RESULT ---\n";
@@ -86,7 +86,7 @@ int checkScholarship() {
 		cin >> hasImproved;
 		hasImproved = toupper(hasImproved);
 		if (hasImproved != 'Y' && hasImproved != 'N') {
-			return 2; // 带错误退出函数
+			return -2; // 带错误退出函数
 		}
 		if (hasImproved == 'Y') {
 			isEligible = true;
@@ -108,7 +108,7 @@ int showEvaluation() {
 	cout << "Enter your average grade for this term (0-100): ";
 	cin >> averageGrade;
 	if (averageGrade > 100 || averageGrade < 0) {
-		return 1; // 带错误退出函数
+		return -1; // 带错误退出函数
 	}
 	switch (averageGrade / 10) {
 	case 10:
@@ -166,9 +166,9 @@ int main() {
 
 		switch (choice) {
 		case 1:
-			while (checkLevel() == 1) {
+			while (checkLevel() == -1) {
 				// 重新调用函数让用户输入正确的成绩
-				cout << "Invalid grade. Please enter a number between 0 and 100.\n";
+				cerr << "Invalid grade. Please enter a number between 0 and 100.\n";
 			}
 			break;
 		case 2:
@@ -176,24 +176,24 @@ int main() {
                 int result = checkScholarship();
                 if (result == 0) {
                     break; // 正常退出，跳出循环
-                } else if (result == 1) {
-                    cout << "Invalid grade. Please enter a number between 0 and 100.\n";
-                } else if (result == 2) {
-                    cout << "Invalid input for choice. Please enter Y or N.\n";
+                } else if (result == -1) {
+                    cerr << "Invalid grade. Please enter a number between 0 and 100.\n";
+                } else if (result == -2) {
+                    cerr << "Invalid input for choice. Please enter Y or N.\n";
                 }
             }
             break;
 		case 3:
-			while (showEvaluation() == 1) {
+			while (showEvaluation() == -1) {
 				// 重新调用函数让用户输入正确的成绩
-				cout << "Invalid average grade. Please enter a number between 0 and 100.\n";
+				cerr << "Invalid average grade. Please enter a number between 0 and 100.\n";
 			}
 			break;
 		case 4:
 			cout << "Exiting program. Goodbye!\n";
 			return 0;
 		default:
-			cout << "Invalid choice. Please enter a number between 1 and 4.\n";
+			cerr << "Invalid choice. Please enter a number between 1 and 4.\n";
 			break;
 		}
 	}

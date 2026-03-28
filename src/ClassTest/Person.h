@@ -1,3 +1,6 @@
+#ifndef PEASON_H
+#define PEASON_H
+
 #include <iostream>
 #include <string>
 
@@ -15,11 +18,4 @@ private:
     std::string name;
 };
 
-int main() {
-    Person p;
-    p.setAge(17);
-    p.setName("Jim");
-    std::cout << p.getAge() << " " << p.getName() << "\n" << std::endl;
-    p.eat();
-    return 0;
-}
+#endif // PEASON_H
